@@ -1,0 +1,46 @@
+/* Grid: 12 / 8 / 4 columns — 80 / 40 / 20px margins — 24 / 20 / 12px gutters.
+   Children are placed with custom properties:
+     --m  mobile placement   (default: full width)
+     --t  tablet placement   (falls back to --m)
+     --d  desktop placement  (falls back to --t)
+   e.g. style="--d: 1 / span 6; --t: 1 / span 4"                       */
+.wrap { padding-inline: var(--margin); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+.grid > * { grid-column: var(--m, 1 / -1); min-width: 0; }
+@media (min-width: 768px) {
+  .grid > * { grid-column: var(--t, var(--m, 1 / -1)); }
+}
+@media (min-width: 1200px) {
+  .grid > * { grid-column: var(--d, var(--t, var(--m, 1 / -1))); }
+}
+
+.section { padding-block: var(--space-7); }
+.page-head {
+  padding-top: calc(var(--header-h) + var(--space-7));
+  padding-bottom: var(--space-6);
+}
+.page-intro { margin-top: var(--space-3); max-width: 46ch; color: var(--text-2); }
+
+.section-head > a { white-space: nowrap; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.section-label {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.stack > * + * { margin-top: var(--space-3); }
+.stack-sm > * + * { margin-top: var(--space-1); }
