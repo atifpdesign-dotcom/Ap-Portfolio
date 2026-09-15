@@ -24,6 +24,12 @@
   <!-- Temporary stock imagery host (remove once all images are your own) -->
   <link rel="preconnect" href="https://images.pexels.com">
 
+  <!-- Minimal fallback styles, in case the main stylesheet can't load -->
+  <style>
+    body { margin: 0; background: #F7F7F5; color: #0B0B0B; }
+    .skip-link { position: fixed; transform: translateY(-200%); }
+    .skip-link:focus-visible { transform: none; }
+  </style>
   <link rel="stylesheet" href="/css/main.css">
   <script type="module" src="/js/main.js"></script>
 </head>
@@ -32,7 +38,19 @@
   <div id="header-root"></div>
   <main id="main" tabindex="-1"></main>
   <div id="footer-root"></div>
-  <div class="cursor" aria-hidden="true"><span class="cursor-ring">VIEW</span></div>
+
+  <!-- Shown only if the website files fail to load -->
+  <div id="load-error" hidden style="max-width:560px;padding:120px 24px;font-family:Arial,sans-serif;line-height:1.6">
+    <p style="font-size:20px;margin:0 0 12px">This page couldn't load.</p>
+    <p style="margin:0">Site owner: check that the <strong>css</strong>, <strong>js</strong> and <strong>assets</strong> folders are uploaded to the top level of the GitHub repository, next to index.html.</p>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (!window.__apReady) document.getElementById('load-error').hidden = false;
+      }, 1500);
+    });
+  </script>
   <noscript><p style="padding:120px 20px;font-family:sans-serif">This website needs JavaScript turned on.</p></noscript>
 </body>
 </html>

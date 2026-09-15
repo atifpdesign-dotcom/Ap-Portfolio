@@ -10,7 +10,9 @@ You need two free accounts: **GitHub** (stores the files) and **Vercel** (shows 
 
 1. Unzip this folder on your computer.
 2. Go to **github.com** and sign in. Click **New repository**, name it (for example `ap-portfolio`), and click **Create repository**.
-3. On the new repository page, click **uploading an existing file**. Drag in **everything inside** the `ap-portfolio` folder (not the folder itself), then click **Commit changes**.
+3. On the new repository page, click **uploading an existing file**. Open the `ap-portfolio` folder on your computer, select **everything inside it**, and **drag** it all onto the GitHub page. Then click **Commit changes**.
+   - Drag and drop. The "choose your files" button can't select folders, so `css`, `js` and `assets` would be left out and the site shows a blank page.
+   - Afterwards, the repository's main page must list `assets`, `css`, `js`, `index.html` and `vercel.json` side by side.
 4. Go to **vercel.com**, sign in with GitHub, and click **Add New → Project**.
 5. Pick the `ap-portfolio` repository and click **Import**.
 6. Leave the settings as they are:

@@ -11,7 +11,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split('?')[0].split('#')[0]
-        if not os.path.isfile(os.path.join(ROOT, path.lstrip('/'))):
+        exists = os.path.isfile(os.path.join(ROOT, path.lstrip('/')))
+        if not exists and not path.startswith(('/css/', '/js/', '/assets/')):
             self.path = '/index.html'
         return super().do_GET()
 
